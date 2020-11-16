@@ -12,8 +12,11 @@ public class UsingBufferedReader {
         //-------------- Test reading 1 MB file. --------------------
 
         StopWatch.start();
+        String fileName = args[0]; // get a file path from CLI arguments
 
-        BufferedReader inputStream= new BufferedReader(new FileReader(DumpDataWriter.input1MB));
+        BufferedReader inputStream= new BufferedReader(new FileReader(new File(fileName)));
+        //BufferedReader inputStream= new BufferedReader(new FileReader(DumpDataWriter.input1MB));
+
         while (inputStream.read()!=-1){}
 
         long duration = StopWatch.stop();
@@ -25,8 +28,10 @@ public class UsingBufferedReader {
         //-------------- Test reading 10 MB file. --------------------
 
         StopWatch.start();
-
-        BufferedReader inputStream2= new BufferedReader(new FileReader(DumpDataWriter.input10MB));
+        String fileName2 = args[1]; // use different string name here
+        //here make a new input stream with the second file name from 2nd argument
+        BufferedReader inputStream2= new BufferedReader(new FileReader(new File(fileName2))); //make different string name
+        //BufferedReader inputStream2= new BufferedReader(new FileReader(DumpDataWriter.input10MB));
         while (inputStream2.read()!=-1){}
 
         long duration2 = StopWatch.stop();
